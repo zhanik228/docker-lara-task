@@ -16,6 +16,20 @@ class LinkSeeder extends Seeder
     {
         $links = [
             [
+                'user_id' => 1,
+                'original_link' => 'https://google.com',
+                'token' => Str::random(10),
+                'private_token' => Str::random(10),
+                'is_private' => true,
+            ],
+            [
+                'user_id' => 1,
+                'original_link' => 'https://facebook.com',
+                'token' => Str::random(10),
+                'private_token' => null,
+                'is_private' => false,
+            ],
+            [
                 'user_id' => 2,
                 'original_link' => 'https://github.com/zhanik228',
                 'token' => Str::random(10),
