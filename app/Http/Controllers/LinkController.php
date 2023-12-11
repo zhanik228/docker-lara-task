@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 
-class LinkController extends Controller
+class   LinkController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -71,10 +71,16 @@ class LinkController extends Controller
             $link = $user->links()->where('private_token', $token)->first();
         }
 
+        if (!$link) {
+            return response()->json([
+                'status' => 'not-found'
+            ], 404);
+        }
+
         if ($link->is_private == 1 && $link->private_token !== $token) {
             return response()->json([
                 'status' => 'forbidden',
-                'message' => 'This is a private link'
+                'message' => 'This is a private link use a private token'
             ], 403);
         }
 

@@ -27,7 +27,8 @@ Route::middleware('json.response')->group(function() {
             });
         });
 
-        Route::apiResource('link', \App\Http\Controllers\LinkController::class);
+        Route::apiResource('link', \App\Http\Controllers\LinkController::class)->except(['show', 'redirect']);
 //        Route::get('{user}/{token}', [\App\Http\Controllers\LinkController::class, 'redirect']);
     });
+    Route::apiResource('link', \App\Http\Controllers\LinkController::class)->only(['show']);
 });
